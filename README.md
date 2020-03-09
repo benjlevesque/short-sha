@@ -20,6 +20,9 @@ jobs:
       - run: echo $SHA
         env: 
           SHA: ${{ steps.short-sha.outputs.sha }}
+      - run: echo $SHA
+        env: 
+          SHA: ${{ env.SHA }}
 ```
 
 ## Options

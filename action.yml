@@ -1,6 +1,9 @@
 name: 'short-sha'
 description: 'Provide a description here'
 author: 'benjlevesque'
+branding:
+  color: orange
+  icon: git-pull-request
 inputs:
   length:      
     description: 'length of the sha1'

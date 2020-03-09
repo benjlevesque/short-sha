@@ -12,4 +12,5 @@ test('test runs', () => {
   }
   const output = cp.execSync(`node ${ip}`, options).toString()
   expect(output).toContain('::set-output name=sha::6e8dcc')
+  expect(output).toContain('::set-env name=SHA::6e8dcc')
 })
