@@ -1,10 +1,14 @@
-name: 'Your name here'
+name: 'short-sha'
 description: 'Provide a description here'
-author: 'Your name or organization here'
+author: 'benjlevesque'
 inputs:
-  myInput:              # change this
-    description: 'input description here'
-    default: 'default value if applicable'
+  length:      
+    description: 'length of the sha1'
+    default: '7'
+    required: false
+outputs:
+  sha:
+    description: 'shortened SHA'
 runs:
   using: 'node12'
   main: 'dist/index.js'

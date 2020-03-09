@@ -1,31 +1,30 @@
 {
-  "name": "typescript-action",
+  "name": "short-sha",
   "version": "0.0.0",
   "private": true,
-  "description": "TypeScript template action",
+  "description": "Github Action to shorten the git SHA1 and make it accessible in outputs",
   "main": "lib/main.js",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && ncc build",
     "format": "prettier --write **/*.ts",
     "format-check": "prettier --check **/*.ts",
     "lint": "eslint src/**/*.ts",
-    "pack": "ncc build",
     "test": "jest",
-    "all": "npm run build && npm run format && npm run lint && npm run pack && npm test"
+    "all": "yarn build && yarn format && yarn lint && yarn pack && yarn test"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/actions/typescript-action.git"
+    "url": "git+https://github.com/benjlevesque/short-sha.git"
   },
   "keywords": [
     "actions",
-    "node",
-    "setup"
+    "git"
   ],
-  "author": "YourNameOrOrganization",
+  "author": "benjlevesque",
   "license": "MIT",
   "dependencies": {
-    "@actions/core": "^1.2.0"
+    "@actions/core": "^1.2.0",
+    "@actions/github": "^2.1.1"
   },
   "devDependencies": {
     "@types/jest": "^24.0.23",
