@@ -1,16 +1,17 @@
 import * as core from '@actions/core'
-import {wait} from './wait'
+import {context} from '@actions/github'
+import {shorten} from './shorten'
 
 async function run(): Promise<void> {
   try {
-    const ms: string = core.getInput('milliseconds')
-    core.debug(`Waiting ${ms} milliseconds ...`)
+    const sha = context.sha
+    core.debug(`Sha:    ${sha}`)
+    const length = Number(core.getInput('length'))
+    core.debug(`Length: ${length}`)
+    const shortSha = shorten(sha, length)
+    core.debug(`Output: ${shortSha}`)
 
-    core.debug(new Date().toTimeString())
-    await wait(parseInt(ms, 10))
-    core.debug(new Date().toTimeString())
-
-    core.setOutput('time', new Date().toTimeString())
+    core.setOutput('sha', shortSha)
   } catch (error) {
     core.setFailed(error.message)
   }
