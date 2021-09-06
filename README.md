@@ -33,4 +33,4 @@ jobs:
 
 | Name   | Required | Default | Description                              |
 | ------ | -------- | ------- | ---------------------------------------- |
-| length | `false`  | 8       | the expected length of the shortened SHA |
+| length | `false`  | 7       | the expected length of the shortened SHA |
