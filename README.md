@@ -2,10 +2,6 @@
 
 `short-sha` is a GitHub Action than provides an output `sha` with the shortened commit SHA.
 
-
-> :warning: On November 16th, 2020 Github removes the `set-env` command. Version prior to v1.2 of this action *will not work*. See github [annoucement](https://github.blog/changelog/2020-10-01-github-actions-deprecating-set-env-and-add-path-commands/) for details.
-
-
 ## Usage
 
 ```yaml
