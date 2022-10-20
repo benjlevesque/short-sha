@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: benjlevesque/short-sha@v1.2
+      - uses: benjlevesque/short-sha@v2
         id: short-sha
         with:
           length: 6
