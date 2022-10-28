@@ -13,7 +13,7 @@ async function run(): Promise<void> {
 
     core.setOutput('sha', shortSha)
     core.exportVariable('SHA', shortSha)
-  } catch (error) {
+  } catch (error: any) {
     core.setFailed(error.message)
   }
 }
