@@ -12,7 +12,7 @@ async function run(): Promise<void> {
     core.debug(`Output: ${shortSha}`)
 
     core.setOutput('sha', shortSha)
-    core.exportVariable('SHA', shortSha)
+    core.exportVariable(core.getInput('variable_name'), shortSha)
   } catch (error) {
     core.setFailed(error.message)
   }

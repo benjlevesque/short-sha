@@ -18,6 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+    
     - uses: ./
       id: short-sha
       with: 
@@ -28,3 +29,19 @@ jobs:
         [ ${#SHA} -eq 6 ] && exit 0 || exit 1;
       env:
         SHA: ${{ steps.short-sha.outputs.sha }}
+    - name: validate env
+      run: | 
+        echo $SHA;
+        [ ${#SHA} -eq 6 ] && exit 0 || exit 1;
+      env:
+        SHA: ${{ env.SHA }}
+    
+    - uses: ./
+      with: 
+        variable_name: "SHORT_SHA"
+    - name: validate custom env
+      run: | 
+        echo $SHORT_SHA;
+        [ ${#SHA} -eq 6 ] && exit 0 || exit 1;
+      env:
+        SHORT_SHA: ${{ env.SHORT_SHA }}

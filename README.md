@@ -4,6 +4,8 @@
 
 ## Usage
 
+You can access the shortened value with either `${{ steps.short-sha.outputs.sha }}` (`short-sha` being the name of the action step) or `${{ env.SHA }}`.
+
 ```yaml
 name: 'build-test'
 on: [push]
@@ -13,20 +15,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: benjlevesque/short-sha@v2.1
+      - uses: benjlevesque/short-sha@v2.2
         id: short-sha
         with:
           length: 6
       - run: echo $SHA
-        env: 
+        env:
           SHA: ${{ steps.short-sha.outputs.sha }}
       - run: echo $SHA
-        env: 
+        env:
           SHA: ${{ env.SHA }}
 ```
 
 ## Options
 
-| Name   | Required | Default | Description                              |
-| ------ | -------- | ------- | ---------------------------------------- |
-| length | `false`  | 7       | the expected length of the shortened SHA |
+| Name          | Required | Default | Description                              |
+| ------------- | -------- | ------- | ---------------------------------------- |
+| length        | `false`  | 7       | the expected length of the shortened SHA |
+| variable_name | `false`  | `SHA`   | the name of the exported env variable    |

@@ -52,7 +52,7 @@ function run() {
             const shortSha = (0, shorten_1.shorten)(sha, length);
             core.debug(`Output: ${shortSha}`);
             core.setOutput('sha', shortSha);
-            core.exportVariable('SHA', shortSha);
+            core.exportVariable(core.getInput('variable_name'), shortSha);
         }
         catch (error) {
             core.setFailed(error.message);
