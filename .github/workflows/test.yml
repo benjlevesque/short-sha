@@ -12,8 +12,11 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - run: |
-        yarn
-        yarn all
+        npm i
+        npm run format
+        npm run lint
+        npm run test
+        npm run build
   test: # make sure the action works on a clean machine without building
     runs-on: ubuntu-latest
     steps:

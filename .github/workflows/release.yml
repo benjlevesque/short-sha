@@ -18,11 +18,11 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: '16'
-        cache: 'yarn'
+        cache: 'npm'
     - name: Install project dependencies
-      run: yarn --prefer-offline
+      run: npm install
     - name: Build
-      run: yarn build
+      run: npm run build
     - name: Commit & Push changes
       run: |
         git config user.name 'github-actions[bot]'
