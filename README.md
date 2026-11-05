@@ -14,8 +14,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: benjlevesque/short-sha@v3.0
+      - uses: actions/checkout@v7
+      - uses: benjlevesque/short-sha@v5.0
         id: short-sha
         with:
           length: 6
