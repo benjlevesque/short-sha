@@ -33,3 +33,7 @@ jobs:
           git commit -m "Release ${{ inputs.tag }}"
           git tag ${{ inputs.tag }}
           git push origin ${{ inputs.tag }}
+      - name: Create GitHub Release
+        run: gh release create "${{ inputs.tag }}" --verify-tag --generate-notes --title "${{ inputs.tag }}"
+        env:
+          GH_TOKEN: ${{ github.token }}
