@@ -1,10 +1,10 @@
 import { defineConfig } from "rolldown";
-import { esmExternalRequirePlugin, replacePlugin } from "rolldown/plugins";
+import { esmExternalRequirePlugin } from "rolldown/plugins";
 export default defineConfig({
   input: "src/main.ts",
   output: {
     format: "esm",
-    file: "dist/index.js"
+    file: "dist/index.js",
   },
   plugins: [
     esmExternalRequirePlugin({
