@@ -1,13 +1,8 @@
 {
+  "extends": "@tsconfig/node24/tsconfig.json",
   "compilerOptions": {
-    "target": "es6",
-    "module": "commonjs",
     "outDir": "./lib",
-    "rootDir": "./src",
-    "strict": true,
-    "noImplicitAny": true,
-    "esModuleInterop": true,
-    "useUnknownInCatchVariables": false
+    "rootDir": "./src"
   },
   "exclude": ["node_modules", "**/*.test.ts"]
 }

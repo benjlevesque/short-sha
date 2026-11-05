@@ -7,7 +7,7 @@
 You can access the shortened value with either `${{ steps.short-sha.outputs.sha }}` (`short-sha` being the name of the action step) or `${{ env.SHA }}`.
 
 ```yaml
-name: 'build-test'
+name: "build-test"
 on: [push]
 
 jobs:

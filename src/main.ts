@@ -1,21 +1,21 @@
-import * as core from '@actions/core'
-import {context} from '@actions/github'
-import {shorten} from './shorten'
+import * as core from "@actions/core";
+import { context } from "@actions/github";
+import { shorten } from "./shorten.js";
 
 async function run(): Promise<void> {
   try {
-    const sha = context.sha
-    core.debug(`Sha:    ${sha}`)
-    const length = Number(core.getInput('length'))
-    core.debug(`Length: ${length}`)
-    const shortSha = shorten(sha, length)
-    core.debug(`Output: ${shortSha}`)
+    const sha = context.sha;
+    core.debug(`Sha:    ${sha}`);
+    const length = Number(core.getInput("length"));
+    core.debug(`Length: ${length}`);
+    const shortSha = shorten(sha, length);
+    core.debug(`Output: ${shortSha}`);
 
-    core.setOutput('sha', shortSha)
-    core.exportVariable(core.getInput('variable_name'), shortSha)
+    core.setOutput("sha", shortSha);
+    core.exportVariable(core.getInput("variable_name"), shortSha);
   } catch (error) {
-    core.setFailed(error.message)
+    core.setFailed((error as Error).message);
   }
 }
 
-run()
+run();
