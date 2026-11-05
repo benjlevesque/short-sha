@@ -4,47 +4,56 @@ on: # rebuild any PRs and main branch changes
   push:
     branches:
       - master
-      - 'releases/*'
+      - "releases/*"
 
 jobs:
   build: # make sure build/ci work properly
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v7
-    - run: |
-        npm i
-        npm run format
-        npm run lint
-        npm run test
-        npm run build
-  test: # make sure the action works on a clean machine without building
+      - uses: actions/checkout@v7
+      - run: |
+          npm i
+          npm run format
+          npm run lint
+          npm run test
+          npm run build
+      - uses: actions/upload-artifact@v7
+        with:
+          name: short-sha-dist
+          path: dist/
+  test: # test the action using the artifact built above
+    needs: build
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v7
-    
-    - uses: ./
-      id: short-sha
-      with: 
-        length: 6
-    - name: validate output
-      run: | 
-        echo $SHA;
-        [ ${#SHA} -eq 6 ] && exit 0 || exit 1;
-      env:
-        SHA: ${{ steps.short-sha.outputs.sha }}
-    - name: validate env
-      run: | 
-        echo $SHA;
-        [ ${#SHA} -eq 6 ] && exit 0 || exit 1;
-      env:
-        SHA: ${{ env.SHA }}
-    
-    - uses: ./
-      with: 
-        variable_name: "SHORT_SHA"
-    - name: validate custom env
-      run: | 
-        echo $SHORT_SHA;
-        [ ${#SHA} -eq 6 ] && exit 0 || exit 1;
-      env:
-        SHORT_SHA: ${{ env.SHORT_SHA }}
+      - uses: actions/checkout@v7
+      - uses: actions/download-artifact@v8
+        with:
+          name: short-sha-dist
+          path: dist
+
+      - uses: ./
+        id: short-sha
+        with:
+          length: 6
+      - name: validate output
+        run: |
+          echo $SHA;
+          [ ${#SHA} -eq 6 ] && exit 0 || exit 1;
+        env:
+          SHA: ${{ steps.short-sha.outputs.sha }}
+      - name: validate env
+        run: |
+          echo $SHA;
+          [ ${#SHA} -eq 6 ] && exit 0 || exit 1;
+        env:
+          SHA: ${{ env.SHA }}
+
+      - uses: ./
+        with:
+          variable_name: "SHORT_SHA"
+      - name: validate custom env
+        run: |
+          echo $SHORT_SHA;
+          [ ${#SHA} -eq 6 ] && exit 0 || exit 1;
+        env:
+          SHORT_SHA: ${{ env.SHORT_SHA }}
