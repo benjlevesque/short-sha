@@ -36,6 +36,7 @@
     "@vercel/ncc": "^0.34.0",
     "oxfmt": "^0.76.0",
     "oxlint": "^1.91.0",
+    "oxlint-tsgolint": "^7.0.2006",
     "tsx": "^4.23.15",
     "typescript": "^7.0.2"
   }
