@@ -9,5 +9,5 @@
     }
   ],
   "minimumReleaseAge": "3 days",
-  "schedule": "weekly"
+  "schedule": ["weekly"]
 }
