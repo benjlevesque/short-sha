@@ -28,7 +28,7 @@
     "@actions/github": "^9.1.1"
   },
   "devDependencies": {
-    "@tsconfig/node26": "26.0.1",
+    "@tsconfig/node26": "26.0.2",
     "@types/node": "26.6.6",
     "oxfmt": "0.78.0",
     "oxlint": "1.93.0",
